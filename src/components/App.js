@@ -174,7 +174,7 @@ class App extends Component {
                 <Grid.Column width={3}>
                   <Header inverted as='h4' content='About' />
                   <List link inverted>
-                    <List.Item as='a'>Contact</List.Item>
+                    <List.Item as='a'><a href='mailto:franco84@gmail.com' target="_blank">Contact</a></List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={3}>
@@ -184,7 +184,7 @@ class App extends Component {
                   </List>
                 </Grid.Column>
                 <Grid.Column width={7}>
-                  <p>Built with React.</p>
+                  <p>Built with React</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
