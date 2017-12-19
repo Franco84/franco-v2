@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Header, Image, Menu, Popup, Segment, Visibility } from 'semantic-ui-react'
+import { Button, Grid, Header, Icon, Image, Menu, Modal, Popup, Reveal, Segment, Visibility } from 'semantic-ui-react'
 import puddlr from '../../assets/Puddlr.png'
 import bb from '../../assets/bb.png'
 import bow from '../../assets/bow.png'
@@ -31,21 +31,25 @@ import webpack from '../../assets/icons/webpack.svg'
 class Tabs extends Component {
   constructor(props) {
     super(props)
-    this.state = { activeItem: 'FrancoCappitta V2', key: 0 }
+    this.state = { modalOpen: false }
   }
 
-  handleItemClick(key, e, {name }) {
-    this.setState({ activeItem: name, key: key })
+  handleOpen(index) {
+    this.setState({ modalOpen: true, index: index })
   }
 
-  content(key) {
+  handleClose() {
+    this.setState({ modalOpen: false })
+  }
+
+  content() {
     const projects = [
-      ['FrancoCappitta V2', fc2, 'http://www.francocappitta.com', 'An update to my portfolio site, www.francocappitta.com', [[html5, 'HTML5'], [css3, 'CSS3'], [webpack, 'Webpack'], [babel2, 'Babel'], [react, 'React'], [semantic, 'Semantic UI React'], [git, 'Git'], [aws, 'Amazon Web Services']]],
-      ['Fun With CSS3', funcss, 'http://css.francocappitta.com', 'A project to practice creating CSS Animations.', [[html5, 'HTML5'], [css3, 'CSS3'], [webpack, 'Webpack'], [babel2, 'Babel'], [react, 'React'], [semantic, 'Semantic UI React'], [git, 'Git'], [aws, 'Amazon Web Services']]],
-      ['Puddlr', puddlr, 'http://www.puddlr.co', 'A demo displaying an easy way for employees to find carpools for their commute to work.', [[html5, 'HTML5'],[css3, 'CSS3'],[jquery, 'jQuery'],[materialize, 'Materialize'],[ruby, 'Ruby'], [rails, 'Ruby on Rails'],[rspec, 'RSpec'],[postgres, 'PostgreSQL'],[jwt, 'JSON Web Token'],[heroku, 'Heroku']]],
-      ['FrancoCappitta V1', fc1, 'http://v1.francocappitta.com', 'My portfolio site!', [[html5, 'HTML5'],[css3, 'CSS3'],[javascript, 'JavaScript'],[jquery, 'jQuery'],[bootstrap, 'Bootstrap'], [aws, 'AWS']]],
-      ['Budget Butler', bb, 'http://www.budgetbutler.co', 'A platform to budget money and analyze spending habits with real-time chart generation.', [[html5, 'HTML5'], [css3, 'CSS3'], [materialize, 'Materialize'], [react, 'React'], [redux, 'Redux'], [rails, 'Ruby on Rails'],[jwt, 'JSON Web Token'],[heroku, 'Heroku']]],
-      ['Battle of Wits', bow, 'http://www.battleofwits.co','An online trivia game where friends can compete.',[[html5, 'HTML5'],[css3, 'CSS3'],[jquery, 'jQuery'],[javascript, 'JavaScript'],[materialize, 'Materialize'],[heroku, 'Heroku']]]
+      ['FrancoCappitta V2', fc2, 'http://www.francocappitta.com', 'An update to my portfolio site, www.francocappitta.com', [[html5, 'HTML5'], [css3, 'CSS3'], [webpack, 'Webpack'], [babel2, 'Babel'], [react, 'React'], [semantic, 'Semantic UI React'], [git, 'Git'], [aws, 'Amazon Web Services']], 'https://github.com/Franco84/franco-v2'],
+      ['Fun With CSS3', funcss, 'http://css.francocappitta.com', 'A project to practice creating CSS Animations.', [[html5, 'HTML5'], [css3, 'CSS3'], [webpack, 'Webpack'], [babel2, 'Babel'], [react, 'React'], [semantic, 'Semantic UI React'], [git, 'Git'], [aws, 'Amazon Web Services']], 'https://github.com/Franco84/fun_with_css3'],
+      ['Puddlr', puddlr, 'http://www.puddlr.co', 'A demo displaying an easy way for employees to find carpools for their commute to work.', [[html5, 'HTML5'],[css3, 'CSS3'],[jquery, 'jQuery'],[materialize, 'Materialize'],[ruby, 'Ruby'], [rails, 'Ruby on Rails'],[rspec, 'RSpec'],[postgres, 'PostgreSQL'],[jwt, 'JSON Web Token'],[heroku, 'Heroku']], 'https://github.com/Franco84/Puddlr'],
+      ['FrancoCappitta V1', fc1, 'http://v1.francocappitta.com', 'My portfolio site!', [[html5, 'HTML5'],[css3, 'CSS3'],[javascript, 'JavaScript'],[jquery, 'jQuery'],[bootstrap, 'Bootstrap'], [aws, 'AWS']],'https://github.com/Franco84/franco'],
+      ['Budget Butler', bb, 'http://www.budgetbutler.co', 'A platform to budget money and analyze spending habits with real-time chart generation.', [[html5, 'HTML5'], [css3, 'CSS3'], [materialize, 'Materialize'], [react, 'React'], [redux, 'Redux'], [rails, 'Ruby on Rails'],[jwt, 'JSON Web Token'],[heroku, 'Heroku']], 'https://github.com/Franco84/BudgetButler'],
+      ['Battle of Wits', bow, 'http://www.battleofwits.co','An online trivia game where friends can compete.',[[html5, 'HTML5'],[css3, 'CSS3'],[jquery, 'jQuery'],[javascript, 'JavaScript'],[rails, 'Ruby on Rails'],[materialize, 'Materialize'],[heroku, 'Heroku']], 'https://github.com/Franco84/BattleOfWits']
     ]
 
     function icons(arr) {
@@ -53,6 +57,7 @@ class Tabs extends Component {
         return (
         <Popup
           key={index}
+          inline='true'
           trigger={<Image style={{padding: '1em 0em'}} centered={true} src={icon[0]} as='a' size='mini' />}
           content={icon[1]}
           position='top center'
@@ -61,55 +66,70 @@ class Tabs extends Component {
       })
     }
 
-      return (
-        <Segment style={{border: 'none', boxShadow: 'none'}}>
-          <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center'}}>{projects[key][0]}</Header>
-          <Grid>
-            <Grid.Row>
-              <Image
-                style={{padding: '4em 0em'}}
-                rounded={true}
-                centered={true}
-                src={projects[key][1]}
-                as='a'
-                size='medium'
-                href={projects[key][2]}
-                target='_blank'
-              />
-            </Grid.Row>
-            <Grid.Row centered>
-              <Header as='h3' style={{ fontSize: '1em', textAlign: 'center', paddingBottom: '1em'}}>{projects[key][3]}</Header>
-            </Grid.Row>
-            <Grid.Row>
-                {icons(projects[key][4])}
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      )
+      return projects.map((project, index) => {
+        const directions = ['move', 'move up', 'move right', 'move', 'move down', 'move right']
+          return (
+            <Grid.Column key={index}>
+                  <Reveal animated={directions[index]}>
+                    <Reveal.Content visible>
+                      <Image style={{padding: '4em 0em'}} fluid={true} centered={true} verticalAlign='middle' rounded={true} target='_blank'
+                        src={project[1]}
+                      />
+                    </Reveal.Content>
+                    <Reveal.Content style={{textAlign: 'center'}} hidden>
+                      <Modal
+                        trigger={
+                          <Header onClick={this.handleOpen.bind(this, index)} as='h3' textAlign='center' style={{ fontSize: '1.5em', paddingTop: 'calc(50% - 0.75em)', cursor: 'pointer'}}>{project[0]}</Header>
+                        }
+                        open={this.state.modalOpen && (this.state.index === index)}
+                        onClose={this.handleClose.bind(this)}
+                        >
+                          <Header as='h3' textAlign='center' style={{fontSize: '1.5em'}}>{project[0]}</Header>
+                        <Modal.Content>
+                          <Grid>
+                            <Grid.Row>
+                              <Image style={{padding: '1em 0em'}} size='medium'  centered={true} verticalAlign='middle' rounded={true} target='_blank'
+                                src={project[1]}
+                                href={project[2]}
+                              />
+                            </Grid.Row>
+                            <Grid.Row centered>
+                              <p style={{fontSize: '1.33em'}}>{project[3]}</p>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                              <Button.Group>
+                                <a href={project[2]} target='_blank'><Button color='grey'><Icon name='globe'/> See it live</Button></a>
+                                <Button.Or />
+                                <a href={project[5]} target='_blank'><Button color='grey'>See the code  <Icon name='github'/></Button></a>
+                              </Button.Group>
+                            </Grid.Row>
+                            <Grid.Row centered>
+                              <p style={{fontSize: '1.33em'}}>Created with:</p>
+                            </Grid.Row>
+                            <Grid.Row>
+                                {icons(project[4])}
+                            </Grid.Row>
+                          </Grid>
+                        </Modal.Content>
+                        <Modal.Actions style={{textAlign: 'center'}}>
+                          <Button color='green' onClick={this.handleClose.bind(this)} inverted>
+                            Close
+                          </Button>
+                        </Modal.Actions>
+                      </Modal>
+                    </Reveal.Content>
+                  </Reveal>
+            </Grid.Column>
+          )
+          })
     }
-
-  menu(activeItem) {
-    const info = [ 'FrancoCappitta V2', 'Fun With CSS3', 'Puddlr', 'FrancoCappitta V1', 'Budget Butler', 'Battle of Wits']
-      return info.map( (item, index) => {
-        return (
-          <Menu.Item key={index} name={item} active={this.state.activeItem === item} onClick={this.handleItemClick.bind(this, index)} />
-        )
-      })
-    }
-
 
   render() {
     return (
-      <Grid>
-        <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
-            {this.menu()}
-          </Menu>
-        </Grid.Column>
-
-        <Grid.Column stretched width={12}>
-            {this.content(this.state.key)}
-        </Grid.Column>
+      <Grid columns={3} container stackable verticalAlign='middle'>
+        <Grid.Row>
+            {this.content()}
+        </Grid.Row>
       </Grid>
     )
   }

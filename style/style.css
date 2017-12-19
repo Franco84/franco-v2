@@ -1,3 +1,5 @@
+
+
 .ui.secondary.inverted.pointing.menu {
   border: none;
 }
@@ -6,11 +8,15 @@
   border: none;
 }
 
+.ui[class*="middle aligned"].grid > .column:not(.row), .ui[class*="middle aligned"].grid > .row > .column, .ui.grid > [class*="middle aligned"].row > .column, .ui.grid > [class*="middle aligned"].column:not(.row), .ui.grid > .row > [class*="middle aligned"].column{
+  align-self: baseline !important;
+}
+
 .bounce-in-left {
   animation: bounce-in-left 2s linear forwards;
 }
 
-.hidden {
+.hidden-fix {
   visibility: hidden;
 }
 

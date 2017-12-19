@@ -30,7 +30,7 @@ class FeedGen extends Component {
               </Feed.Label>
               <Feed.Content>
                 <Feed.Summary>
-                  <Feed.User><a style={{textDecortion: 'none', color: 'black'}} href="http://www.github.com/franco84" target="_blank">{item.actor.login}</a></Feed.User><a href={item.repo.url} target="_blank"> {item.type === 'PushEvent' ? 'updated' : 'created'} {item.repo.name} </a>
+                  <Feed.User as='h5'><a style={{textDecortion: 'none', color: 'black'}} href="http://www.github.com/franco84" target="_blank">{item.actor.login}</a></Feed.User><a href={`http://www.github.com/${item.repo.name}/`} target="_blank"> {item.type === 'PushEvent' ? 'updated' : 'created'} {item.repo.name} </a>
                   <Feed.Date>{currDate}</Feed.Date>
                 </Feed.Summary>
               </Feed.Content>
