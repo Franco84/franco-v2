@@ -10,7 +10,7 @@ class About extends Component {
         <Grid.Column width={8}>
           <Header as='h3' style={{ fontSize: '2em', textAlign: 'center' }}>About Me</Header>
           <p style={{ fontSize: '1.33em', textAlign: 'justify' }}>
-            I'm a New York City based software engineer with experience in JavaScript and Ruby. Some of the frameworks and libraries I use include React, Redux, Ruby on Rails, and Bootstrap. Creating things on the web started out as hobby. I'm always trying to improve, and with the way web development moves, there is no shortage of things to learn or practice! In my spare time I love traveling, snowboarding, and trying differend foods.
+            Creating things on the web started out as hobby, but quickly turned into my passion. As a New York based software engineer,  I'm always trying to hone my skills. With the way web development moves, there is no shortage of things to learn or practice! In my spare time I love traveling, snowboarding, and trying different foods.
           </p>
           <br />
           <Header as='h3' style={{ fontSize: '2em', textAlign: 'center' }}>Upcoming Developer Focus</Header>
