@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Grid, Header, Icon, Image, Menu, Modal, Popup, Reveal, Segment, Visibility } from 'semantic-ui-react'
-import puddlr from '../../assets/Puddlr.png'
-import bb from '../../assets/bb.png'
-import bow from '../../assets/bow.png'
-import funcss from '../../assets/funcss.png'
-import fc1 from '../../assets/fc1.png'
+import puddlr from '../../assets/puddlr.jpg'
+import bb from '../../assets/bb.jpg'
+import bow from '../../assets/bow.jpg'
+import funcss from '../../assets/cssfun.png'
+import fc1 from '../../assets/fc1.jpg'
 import fc2 from '../../assets/v2.png'
 import aws from '../../assets/icons/aws.svg'
 import babel1 from '../../assets/icons/babel1.svg'
@@ -71,8 +71,8 @@ class Tabs extends Component {
           return (
             <Grid.Column key={index}>
                   <Reveal animated={directions[index]}>
-                    <Reveal.Content visible>
-                      <Image style={{padding: '4em 0em'}} fluid={true} centered={true} verticalAlign='middle' rounded={true} target='_blank'
+                    <Reveal.Content style={{padding: '4em 0em'}} visible>
+                      <Image centered={true} verticalAlign='middle' rounded={true} target='_blank'
                         src={project[1]}
                       />
                     </Reveal.Content>
