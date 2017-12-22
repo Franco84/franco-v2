@@ -16,8 +16,8 @@ class App extends Component {
     return (
       <Menu fixed='top' borderless size='small'>
         <Container>
-          <Menu.Item><Link activeClass="active" className="test1" to="about" spy={true} smooth={true} duration={500} >About</Link></Menu.Item>
-          <Menu.Item><Link activeClass="active" className="test1" to="projects" spy={true} smooth={true} duration={500} >Projects</Link></Menu.Item>
+          <Menu.Item><Link activeClass="active" className="test1 underline" to="about" spy={true} smooth={true} duration={500} >About</Link></Menu.Item>
+          <Menu.Item><Link activeClass="active" className="test1 underline" to="projects" spy={true} smooth={true} duration={500} >Projects</Link></Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item>
               <a href='/resume.pdf' target="_blank"><Icon name='file text outline' link={true} size='big' /></a>
@@ -77,8 +77,8 @@ class App extends Component {
 
             <Container>
               <Menu inverted pointing secondary size='small'>
-                <Menu.Item><Link activeClass="active" className="test1" to="about" spy={true} smooth={true} duration={500} >About</Link></Menu.Item>
-                <Menu.Item><Link activeClass="active" className="test1" to="projects" spy={true} smooth={true} duration={500} >Projects</Link></Menu.Item>
+                <Menu.Item><Link activeClass="active" className="test1 underline" to="about" spy={true} smooth={true} duration={500} >About</Link></Menu.Item>
+                <Menu.Item><Link activeClass="active" className="test1 underline" to="projects" spy={true} smooth={true} duration={500} >Projects</Link></Menu.Item>
                 <Menu.Menu position='right'>
                   <Menu.Item>
                     <a href='/resume.pdf' target="_blank"><Icon name='file text outline' link={true} size='big' /></a>
@@ -164,9 +164,6 @@ class App extends Component {
                   <List link inverted>
                     <List.Item>Let's build something together!</List.Item>
                   </List>
-                </Grid.Column>
-                <Grid.Column width={7}>
-                  <p>Built with React</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
